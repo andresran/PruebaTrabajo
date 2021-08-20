@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PruebaTrabajo.Models.proyectos>
+
+@{
+    ViewBag.Title = "Proyectos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Proyectos</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo proyecto", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdProyecto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdProyecto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdProyecto })
+        </td>
+    </tr>
+}
+
+</table>

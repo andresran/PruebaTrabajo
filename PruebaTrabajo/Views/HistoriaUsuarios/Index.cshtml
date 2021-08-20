@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PruebaTrabajo.Models.HistoriaUsuario>
+
+@{
+    ViewBag.Title = "Historia Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Historia Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva Historia de Usuario", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.proyectos.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.proyectos.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdHistoriaUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdHistoriaUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdHistoriaUsuario })
+        </td>
+    </tr>
+}
+
+</table>

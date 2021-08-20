@@ -1,0 +1,91 @@
+﻿@model PruebaTrabajo.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.png">
+
+    <title>register|Nominaplus</title>
+
+    <link href="~/NiceAdmin/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="~/NiceAdmin/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="~/NiceAdmin/css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="~/NiceAdmin/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="~/NiceAdmin/css/style.css" rel="stylesheet">
+    <link href="~/NiceAdmin/css/style-responsive.css" rel="stylesheet" />
+
+
+
+
+
+</head>
+
+<body class="login-img2-body">
+
+   
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="login-wrap">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_chat"></i></span>
+
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Correo electronico" })
+
+        </div>
+
+        <div class="input-group">
+
+
+            <span class="input-group-addon"><i class="icon_house"></i></span>
+
+            <input type="text" name="NombreEmpresa" value="" class="form-control" placeholder="Nombre de la Empresa" />
+
+
+
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+            <div>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+            </div>
+        </div>
+        <div class="checkbox">
+           
+
+            @Html.ActionLink("login", "login")
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-default btn-primary" value="Registrarse" />
+        </div>
+    </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+
+</html>
